@@ -1,0 +1,8 @@
+@import '../../../assets/styles/mixins';
+
+.weather-wrapper {
+  @include fullSize;
+  @include flexElement(center, flex-start);
+  //background: linear-gradient(100deg, #402, #006);
+
+}

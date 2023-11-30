@@ -1,0 +1,15 @@
+<div class="input-wrapper">
+  <span>
+    <input
+      class="input-field"
+      id="city-input"
+      type="text"
+      [value]="value"
+      (input)="onInputChange($event)"
+    />
+    <label for="city-input">City</label>
+  </span>
+  <button
+    [disabled]="isButtonDisabled"
+    (click)="searchCity()">Search Weather</button>
+</div>
