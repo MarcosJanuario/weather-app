@@ -1,6 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { Settings, Theme } from '../../types/Settings';
+import { updateTheme } from '../../../store/actions/settings.actions';
 
 @Component({
   selector: 'app-input',
@@ -8,38 +11,40 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
   styleUrls: ['./input.component.scss']
 })
 export class InputComponent implements OnDestroy {
-  private destroy$ = new Subject<void>();
-  private inputChange$ = new Subject<string>();
+  private _destroy$ = new Subject<void>();
+  private _inputChange$ = new Subject<string>();
 
-  value: string = '';
+  inputValue: string = '';
 
-  constructor() {
-    this.inputChange$
+  constructor(private store: Store<{ settings: Settings }>) {
+    this._inputChange$
       .pipe(
         debounceTime(1000),
-        takeUntil(this.destroy$)
+        takeUntil(this._destroy$)
       )
       .subscribe(newValue => {
-        console.log('SUBSCRIBED new value: ', newValue);
-        this.value = newValue;
+        this.inputValue = newValue;
       });
   }
 
   onInputChange(event: Event) {
     const newValue = (event.target as HTMLInputElement).value;
-    this.inputChange$.next(newValue);
+    this._inputChange$.next(newValue);
   }
 
   searchCity(): void {
-    console.log('SEARCHING: ', this.value);
+    console.log('SEARCHING: ', this.inputValue);
+    this.store.dispatch(updateTheme({
+      theme: Theme.BLACK
+    }));
   }
 
   get isButtonDisabled(): boolean {
-    return this.value === '';
+    return this.inputValue === '';
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 }

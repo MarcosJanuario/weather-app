@@ -1,8 +1,11 @@
 @import '../../../../assets/styles/mixins';
 
 .weather-wrapper {
-  @include fullSize;
+  width: 100vw;
+  height: 100vh;
   @include flexElement(center, flex-start);
-  //background: linear-gradient(100deg, #402, #006);
+}
 
+.dark-mode {
+  background: #212121;
 }
