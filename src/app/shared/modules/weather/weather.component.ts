@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Settings, Theme } from '../../types/Settings';
 import { takeUntil } from 'rxjs/operators';
+import { WeatherData } from '../../types/Weather';
 
 @Component({
   selector: 'app-weather',
@@ -10,28 +11,47 @@ import { takeUntil } from 'rxjs/operators';
   styleUrl: './weather.component.scss'
 })
 export class WeatherComponent implements OnInit, OnDestroy {
-  private _destroy$ = new Subject<void>();
+  private _destroy$: Subject<void> = new Subject<void>();
 
-  settings$: Observable<Settings>;
-  initialSettings: Settings = <Settings>{};
+  settingsObservable$: Observable<Settings>;
+  weatherObservable$: Observable<WeatherData>
+  settings: Settings = <Settings>{};
+  weatherData: WeatherData = <WeatherData>{};
 
-  constructor(private store: Store<{ settings: Settings }>) {
-    this.settings$ = store.select('settings');
+  constructor(private store: Store<{ settings: Settings; weather: WeatherData}>) {
+    this.settingsObservable$ = store.select('settings');
+    this.weatherObservable$ = store.select('weather');
   }
 
   ngOnInit() {
-    this.settings$
+    this.subscribeToSettings();
+    this.subscribeToWeatherData();
+  }
+
+  subscribeToSettings(): void {
+    this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
       )
-      .subscribe(settings => {
-        this.initialSettings = settings;
-        console.log('[WEATHER] this.initialSettings: ', this.initialSettings);
+      .subscribe((settings: Settings): void => {
+        this.settings = settings;
+        console.log('[WEATHER] this.settings: ', this.settings);
+      });
+  }
+
+  subscribeToWeatherData(): void {
+    this.weatherObservable$
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe((weatherData: WeatherData): void => {
+        this.weatherData = weatherData;
+        console.log('[WEATHER] this.weatherData: ', this.weatherData);
       });
   }
 
   get isDarkMode(): boolean {
-    return this.initialSettings.theme === Theme.BLACK;
+    return this.settings.theme === Theme.BLACK;
   }
 
   ngOnDestroy() {

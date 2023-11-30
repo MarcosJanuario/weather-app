@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { WeatherComponent } from './weather.component';
-import { InputComponent } from '../../components/input/input.component';
 import { CommonModule } from '@angular/common';
 import { WeatherRoutingModule } from './weather-routing.module';
 
@@ -10,8 +9,7 @@ import { WeatherRoutingModule } from './weather-routing.module';
     WeatherRoutingModule
   ],
   declarations: [
-    WeatherComponent,
-    InputComponent
+    WeatherComponent
   ],
 })
 export class WeatherModule { }

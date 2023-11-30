@@ -1,12 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { Settings, Theme } from '../../types/Settings';
-import { updateTheme } from '../../../store/actions/settings.actions';
+import { Settings } from '../../types/Settings';
+import { WeatherService } from '../../services/weather.service';
+import { WeatherData } from '../../types/Weather';
+import { updateWeather } from '../../../store/actions/weather.actions';
 
 @Component({
-  selector: 'app-input',
+  selector: 'input-search',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
@@ -16,10 +18,13 @@ export class InputComponent implements OnDestroy {
 
   inputValue: string = '';
 
-  constructor(private store: Store<{ settings: Settings }>) {
+  constructor(
+    private store: Store<{ settings: Settings; weather: WeatherData }>,
+    private weatherService: WeatherService
+  ) {
     this._inputChange$
       .pipe(
-        debounceTime(1000),
+        debounceTime(500),
         takeUntil(this._destroy$)
       )
       .subscribe(newValue => {
@@ -33,10 +38,17 @@ export class InputComponent implements OnDestroy {
   }
 
   searchCity(): void {
-    console.log('SEARCHING: ', this.inputValue);
-    this.store.dispatch(updateTheme({
-      theme: Theme.BLACK
-    }));
+    if (this.inputValue !== '') {
+      this.weatherService.getCurrentWeather(this.inputValue)
+        .subscribe({
+            next: (weatherData: WeatherData): void => {
+              this.store.dispatch(updateWeather(weatherData));
+            },
+            error: (error): void => console.error('Error fetching weather data:', error),
+            complete: (): void => console.log('Weather data fetch completed.')
+          }
+        );
+    }
   }
 
   get isButtonDisabled(): boolean {
