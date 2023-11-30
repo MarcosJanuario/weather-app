@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WeatherComponent } from './components/weather/weather.component';
 
 const routes: Routes = [
   {
     path: 'weather',
-    title: 'Weather',
-    component: WeatherComponent
+    loadChildren: () => import('./shared/modules/weather/weather.module')
+      .then(m => m.WeatherModule)
   },
   {
     path: '',
