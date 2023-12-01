@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { settingsReducer } from './store/reducers/settings.reducer';
-import { InputComponent } from './shared/components/input/input.component';
 import { WeatherService } from './shared/services/weather.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { weatherReducer } from './store/reducers/weather.reducer';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { InputSearchComponent } from './shared/components/input-search/input-search.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -19,7 +19,7 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    InputComponent
+    InputSearchComponent
   ],
   imports: [
     BrowserModule,

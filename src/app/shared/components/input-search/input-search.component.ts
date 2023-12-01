@@ -9,10 +9,10 @@ import { updateWeather } from '../../../store/actions/weather.actions';
 
 @Component({
   selector: 'input-search',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  templateUrl: './input-search.component.html',
+  styleUrls: ['./input-search.component.scss']
 })
-export class InputComponent implements OnDestroy {
+export class InputSearchComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
   private _inputChange$ = new Subject<string>();
 
