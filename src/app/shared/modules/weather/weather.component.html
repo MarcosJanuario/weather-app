@@ -1,3 +1,23 @@
 <div class="weather-wrapper" [ngClass]="{'dark-mode': isDarkMode}">
-  Weather works!
+  <ng-container *ngIf="weatherData; else emptyData">
+    <div class="grid-container">
+
+      <div *ngFor="let entry of weatherData | keyvalue" class="grid-item">
+        <ng-container *ngIf="entry.key === 'location'; else otherData">
+          <div class="property-name">{{ entry.key }}</div>
+          <div class="property-value">{{ weatherData[entry.key].name }}</div>
+        </ng-container>
+        <ng-template #otherData>
+          <div class="property-name">{{ entry.key }}</div>
+          <div class="property-value">{{ entry.value }}</div>
+        </ng-template>
+      </div>
+
+    </div>
+  </ng-container>
+  <ng-template #emptyData>
+    <div>
+      Empty data
+    </div>
+  </ng-template>
 </div>

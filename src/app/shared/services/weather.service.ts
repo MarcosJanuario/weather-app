@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { WeatherData } from '../types/Weather';
+import { WeatherResponseData } from '../types/Weather';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) {}
 
-  getCurrentWeather(cityName: string): Observable<WeatherData> {
+  getCurrentWeather(cityName: string): Observable<WeatherResponseData> {
     const requestBody = { cityName };
-    return this.http.post<WeatherData>(this.apiUrl, requestBody);
+    return this.http.post<WeatherResponseData>(this.apiUrl, requestBody);
   }
 }
