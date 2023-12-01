@@ -1,0 +1,13 @@
+{
+  "enterCityName": "Geben Sie den Stadtnamen ein",
+  "feelsLike": "Gefühlt wie",
+  "humidity": "Luftfeuchtigkeit",
+  "location": "Ort",
+  "observationTime": "Beobachtungszeit",
+  "search": "Suche",
+  "temperature": "Temperatur",
+  "uvIndex": "UV-Index",
+  "visibility": "Sichtweite",
+  "weatherDescriptions": "Wetterbeschreibungen",
+  "windSpeed": "Windgeschwindigkeit"
+}

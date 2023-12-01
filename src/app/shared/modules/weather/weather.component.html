@@ -4,11 +4,11 @@
 
       <div *ngFor="let entry of weatherData | keyvalue" class="grid-item">
         <ng-container *ngIf="entry.key === 'location'; else otherData">
-          <div class="property-name">{{ entry.key }}</div>
+          <div class="property-name">{{ entry.key | translate }}</div>
           <div class="property-value">{{ weatherData[entry.key].name }}</div>
         </ng-container>
         <ng-template #otherData>
-          <div class="property-name">{{ entry.key }}</div>
+          <div class="property-name">{{ entry.key | translate }}</div>
           <div class="property-value">{{ entry.value }}</div>
         </ng-template>
       </div>

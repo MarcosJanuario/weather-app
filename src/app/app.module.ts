@@ -7,8 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { settingsReducer } from './store/reducers/settings.reducer';
 import { InputComponent } from './shared/components/input/input.component';
 import { WeatherService } from './shared/services/weather.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { weatherReducer } from './store/reducers/weather.reducer';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -22,6 +28,14 @@ import { weatherReducer } from './store/reducers/weather.reducer';
     StoreModule.forRoot({
       settings: settingsReducer,
       weather: weatherReducer,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
     })
   ],
   providers: [WeatherService],

@@ -20,7 +20,7 @@ export class InputComponent implements OnDestroy {
 
   constructor(
     private store: Store<{ settings: Settings; weather: WeatherData }>,
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
   ) {
     this._inputChange$
       .pipe(
@@ -48,6 +48,7 @@ export class InputComponent implements OnDestroy {
                   temperature: weatherData.temperature,
                   weatherDescriptions: weatherData.weatherDescriptions,
                   windSpeed: weatherData.windSpeed,
+                  pressure: weatherData.pressure,
                   humidity: weatherData.humidity,
                   feelsLike: weatherData.feelsLike,
                   uvIndex: weatherData.uvIndex,

@@ -36,6 +36,7 @@ export type Weather = {
   temperature: number;
   weatherDescriptions: string[];
   windSpeed: number;
+  pressure: number;
   humidity: number;
   feelsLike: number;
   uvIndex: number;

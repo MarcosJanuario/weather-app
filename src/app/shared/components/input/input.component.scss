@@ -33,62 +33,13 @@
   font-weight: bold;
   border: 2px solid #212121;
   border-radius: 8px;
-  text-indent: 45px;
   transition: all .3s ease-in-out;
+  text-align: center;
 
   &::-webkit-input-placeholder {
-    color: #efefef;
+    color: #bdbdbd;
     text-indent: 0;
     font-weight: 300;
-  }
-
-  + label {
-    display: inline-block;
-    position: absolute;
-    top: -2px;
-    left: 0;
-    padding: .8rem 1rem;
-    text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    transition: all .4s ease-in-out;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    transform-origin: left bottom;
-    z-index: 99;
-
-    &:before,
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      border-radius: 3px;
-      background: #616161;
-      transform-origin: left bottom;
-      transition: all .4s ease-in-out;
-      pointer-events: none;
-      z-index: -1;
-    }
-    &:before {
-      background: rgba(3,36,41,.2);
-      z-index: -2;
-      right: 20%;
-    }
-  }
-}
-.input-field:focus,
-.input-field:active {
-  text-indent: 0;
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-  + label {
-    transform: rotate(-66deg);
-    border-radius: 8px;
-
-    &:before {
-      transform: rotate(10deg);
-    }
   }
 }
 
@@ -110,9 +61,4 @@ button {
   transition: transform 0.2s ease-in-out;
   margin-left: 5px;
   border-radius: 8px;
-}
-
-button:active {
-  transform: translateY(2px) scale(0.95);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }

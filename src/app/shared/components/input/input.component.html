@@ -4,12 +4,12 @@
       class="input-field"
       id="city-input"
       type="text"
+      placeholder="{{ 'enterCityName' | translate }}"
       [value]="inputValue"
       (input)="onInputChange($event)"
     />
-    <label for="city-input">City</label>
   </span>
   <button
     [disabled]="isButtonDisabled"
-    (click)="searchCity()">Search Weather</button>
+    (click)="searchCity()">{{ 'search' | translate }}</button>
 </div>

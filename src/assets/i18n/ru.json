@@ -1,0 +1,13 @@
+{
+  "enterCityName": "Введите название города",
+  "feelsLike": "Ощущается как",
+  "humidity": "Влажность",
+  "location": "Местоположение",
+  "observationTime": "Время наблюдения",
+  "search": "Поиск",
+  "temperature": "Температура",
+  "uvIndex": "УФ-индекс",
+  "visibility": "Видимость",
+  "weatherDescriptions": "Описания погоды",
+  "windSpeed": "Скорость ветра"
+}
