@@ -1,4 +1,5 @@
 {
+  "retrievingWeatherData": "Retrieving Weather data...",
   "enterCityName": "Enter city name",
   "feelsLike": "Fells Like",
   "humidity": "Humidity",

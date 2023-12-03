@@ -1,4 +1,5 @@
 {
+  "retrievingWeatherData": "Получение метеоданных...",
   "enterCityName": "Введите название города",
   "feelsLike": "Ощущается как",
   "humidity": "Влажность",

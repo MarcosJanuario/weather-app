@@ -15,6 +15,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { SideMenuComponent } from './shared/components/side-menu/side-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { uiReducer } from './store/reducers/ui.reducer';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,7 +25,8 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [
     AppComponent,
     InputSearchComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ export function createTranslateLoader(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
+        deps: [ HttpClient ]
       },
       defaultLanguage: 'en'
     }),

@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Settings, Theme } from './shared/types/Settings';
 import { takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
+import { UiController } from './shared/types/UiController';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +14,17 @@ export class AppComponent implements OnDestroy {
   private _destroy$: Subject<void> = new Subject<void>();
 
   settingsObservable$: Observable<Settings>;
+  uiControllerObservable$: Observable<UiController>;
 
   settings: Settings = <Settings>{};
-  title = 'weather-app';
+  uiController: UiController = <UiController>{};
 
-  constructor(private store: Store<{ settings: Settings }>) {
+  constructor(private store: Store<{ settings: Settings; ui: UiController }>) {
     this.settingsObservable$ = store.select('settings');
+    this.uiControllerObservable$ = store.select('ui');
+
     this.subscribeToSettings();
+    this.subscribeToUiController();
   }
 
   get isDarkMode(): boolean {
@@ -34,6 +39,17 @@ export class AppComponent implements OnDestroy {
       .subscribe((settings: Settings): void => {
         this.settings = settings;
         console.log('[SETTINGS] app.comp settings: ', this.settings);
+      });
+  }
+
+  subscribeToUiController(): void {
+    this.uiControllerObservable$
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe((ui: UiController): void => {
+        console.log('[UI CONTROLLER] app.comp ui: ', ui);
+        this.uiController = ui;
       });
   }
 

@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { toggleSideMenu } from '../actions/ui.actions';
-import { SideMenuAction, UiController } from '../../shared/types/UiController';
+import { toggleLoadingSpinner, toggleSideMenu } from '../actions/ui.actions';
+import { LoadingSpinnerAction, SideMenuAction, UiController } from '../../shared/types/UiController';
 
 export const initialState: UiController = {
-  sideMenu: { show: 'hidden' }
+  sideMenu: { show: 'hidden' },
+  loadingSpinner: { show: false }
 };
 
 export const uiReducer = createReducer(
@@ -14,6 +15,16 @@ export const uiReducer = createReducer(
     return {
       ...state,
       sideMenu: {
+        show: action.data
+      }
+    };
+  }),
+  on(toggleLoadingSpinner, (state: UiController, action: LoadingSpinnerAction) => {
+    console.log('[REDUCER] toggleLoadingSpinner state: ', state);
+    console.log('[REDUCER] toggleLoadingSpinner action: ', action);
+    return {
+      ...state,
+      loadingSpinner: {
         show: action.data
       }
     };

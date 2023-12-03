@@ -1,4 +1,5 @@
 {
+  "retrievingWeatherData": "Recuperando dados meteorológicos...",
   "enterCityName": "Digite o nome da cidade",
   "feelsLike": "Sensação térmica",
   "humidity": "Umidade",

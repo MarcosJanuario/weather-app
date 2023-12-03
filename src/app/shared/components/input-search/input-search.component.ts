@@ -6,7 +6,9 @@ import { Settings } from '../../types/Settings';
 import { WeatherService } from '../../services/weather.service';
 import { WeatherData, WeatherResponseData } from '../../types/Weather';
 import { updateWeather } from '../../../store/actions/weather.actions';
-import { toggleSideMenu } from '../../../store/actions/ui.actions';
+import { toggleLoadingSpinner, toggleSideMenu } from '../../../store/actions/ui.actions';
+
+const INPUT_DEBOUNCE_TIME = 500;
 
 @Component({
   selector: 'input-search',
@@ -20,12 +22,12 @@ export class InputSearchComponent implements OnDestroy {
   inputValue: string = '';
 
   constructor(
-    private store: Store<{ settings: Settings; weather: WeatherData }>,
+    private store: Store<{ settings: Settings; weather: WeatherData; }>,
     private weatherService: WeatherService,
   ) {
     this._inputChange$
       .pipe(
-        debounceTime(500),
+        debounceTime(INPUT_DEBOUNCE_TIME),
         takeUntil(this._destroy$)
       )
       .subscribe(newValue => {
@@ -40,6 +42,11 @@ export class InputSearchComponent implements OnDestroy {
 
   searchCity(): void {
     if (this.inputValue !== '') {
+
+      this.store.dispatch(toggleLoadingSpinner({
+        data: true
+      }));
+
       this.weatherService.getCurrentWeather(this.inputValue)
         .subscribe({
             next: (weatherData: WeatherResponseData): void => {
@@ -59,7 +66,12 @@ export class InputSearchComponent implements OnDestroy {
               }));
             },
             error: (error): void => console.error('Error fetching weather data:', error),
-            complete: (): void => console.log('Weather data fetch completed.')
+            complete: (): void => {
+              console.log('Weather data fetch completed.')
+              this.store.dispatch(toggleLoadingSpinner({
+                data: false
+              }));
+            }
           }
         );
     }
