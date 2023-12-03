@@ -1,13 +1,13 @@
 <div class="theme-selection">
-  <label class="language-header">Theme:</label>
+  <label class="language-header">{{ 'theme' | translate }}:</label>
   <label class="radio-container"
          [ngClass]="isDarkMode ? 'radio-container-dark-mode' : 'radio-container-light-mode'">
     <input type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.LIGHT" (ngModelChange)="onThemeChanged()">
-    <span class="radio-label">Light Theme</span>
+    <span class="radio-label">Light</span>
   </label>
   <label class="radio-container"
          [ngClass]="isDarkMode ? 'radio-container-dark-mode' : 'radio-container-light-mode'">
     <input type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.DARK" (ngModelChange)="onThemeChanged()">
-    <span class="radio-label">Dark Theme</span>
+    <span class="radio-label">Dark</span>
   </label>
 </div>

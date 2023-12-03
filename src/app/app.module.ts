@@ -31,7 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
     SideMenuComponent,
     LoadingSpinnerComponent,
     ThemeSelectionComponent,
-    LanguageSelectionComponent,
+    LanguageSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +55,7 @@ export function createTranslateLoader(http: HttpClient) {
     FormsModule
   ],
   providers: [WeatherService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }

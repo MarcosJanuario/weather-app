@@ -2,7 +2,10 @@
   <div class="property-name" [ngClass]="isDarkMode ? 'property-name-dark-mode' : 'property-name-light-mode'">
     {{ header | translate }}
   </div>
-  <div class="property-value" [ngClass]="isDarkMode ? 'property-value-light-mode' : 'property-value-dark-mode'">
+  <div class="property-value"
+       [ngClass]="isDarkMode ? 'property-value-light-mode' : 'property-value-dark-mode'"
+       [appValueFormat]="{ header: header, contentValue: contentValue }"
+  >
     {{ contentValue }}
   </div>
 
