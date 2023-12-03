@@ -71,10 +71,8 @@ export class InputSearchComponent implements OnDestroy {
 
   toggleSideMenu(): void {
     this.store.dispatch(toggleSideMenu({
-      sideMenu: {
-        show: 'visible'
-      }}
-    ));
+      data: 'visible'
+    }));
   }
 
   ngOnDestroy() {

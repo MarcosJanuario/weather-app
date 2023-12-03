@@ -1,4 +1,4 @@
-<main class="main">
+<main class="main" [ngClass]="isDarkMode ? 'dark-mode-bg' : 'light-mode-bg'">
   <app-header />
   <input-search />
   <router-outlet />

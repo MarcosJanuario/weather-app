@@ -45,23 +45,15 @@ export class SideMenuComponent implements OnInit {
         takeUntil(this._destroy$)
       )
       .subscribe((ui: UiController): void => {
-        console.log('[UI CONTROLLER] ui: ', ui);
+        console.log('[UI CONTROLLER] side-menu.comp ui: ', ui);
         this.ui = ui;
         this.sideMenuState = ui.sideMenu.show;
       });
   }
 
-  close(): void {
-    console.log('closing menu ...');
+  closeSideMenu(): void {
     this.store.dispatch(toggleSideMenu({
-      sideMenu: {
-        show: 'hidden'
-      }}
-    ));
-  }
-
-  toggleSideMenu() {
-    console.log('toggleSideMenu...');
-    this.sideMenuState = (this.sideMenuState === 'hidden') ? 'visible' : 'hidden';
+      data: 'hidden'
+    }));
   }
 }

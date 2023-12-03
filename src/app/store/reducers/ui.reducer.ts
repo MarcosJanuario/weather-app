@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { toggleSideMenu } from '../actions/ui.actions';
-import { UiController } from '../../shared/types/UiController';
+import { SideMenuAction, UiController } from '../../shared/types/UiController';
 
 export const initialState: UiController = {
   sideMenu: { show: 'hidden' }
@@ -8,13 +8,13 @@ export const initialState: UiController = {
 
 export const uiReducer = createReducer(
   initialState,
-  on(toggleSideMenu, (state, action) => {
+  on(toggleSideMenu, (state: UiController, action: SideMenuAction) => {
     console.log('[REDUCER] toggleSideMenu state: ', state);
     console.log('[REDUCER] toggleSideMenu action: ', action);
     return {
       ...state,
       sideMenu: {
-        show: action.sideMenu.show
+        show: action.data
       }
     };
   })
