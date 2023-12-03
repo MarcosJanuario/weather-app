@@ -14,6 +14,7 @@
     @content;
   }
 }
+
 .input-wrapper {
   //background: rgba(0, 0, 0, 0.2);
   width: 100vw;
@@ -25,6 +26,7 @@
     margin: 6vh 0;
   }
 }
+
 .input-field {
   display: inline-block;
   width: 20vw;
@@ -32,7 +34,6 @@
   padding: 10px 0 10px 15px;
   color: #212121;
   font-weight: bold;
-  border: 2px solid #212121;
   border-radius: 8px;
   transition: all .3s ease-in-out;
   text-align: center;
@@ -45,6 +46,14 @@
   }
 }
 
+.input-dark-mode {
+  border: 2px solid #dedede;
+}
+
+.input-light-mode {
+  border: 2px solid #212121;
+}
+
 input:focus {
   outline: none;
   box-shadow: 0 0 3px #212121;
@@ -53,13 +62,11 @@ input:focus {
 
 button {
   padding: 10px;
-  border: 2px solid #212121;
   background-color: rgba(2, 136, 209);
   color: #212121;
   font-weight: bold;
   cursor: pointer;
   position: relative;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.1s ease-in-out;
   margin-left: 5px;
   border-radius: 8px;
@@ -71,6 +78,16 @@ button:active {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
+.button-dark-mode {
+  border: 2px solid #dedede;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+}
+
+.button-light-mode {
+  border: 2px solid #212121;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 .gear {
   width: 2.5rem;
   height: 2.5rem;
@@ -78,16 +95,22 @@ button:active {
   position: absolute;
   top: 0;
   right: 0;
-  background-image: url('../../../../assets/icons/gear.png');
-  background-size: cover; /* Adjust as needed */
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   cursor: pointer;
   transition: transform 0.1s ease-in-out;
 
   &:active {
     transform: translateY(2px) scale(0.95);
   }
+}
+
+.gear-dark-mode {
+  background-image: url('../../../../assets/icons/gear-white.png');
+}
+
+.gear-light-mode {
+  background-image: url('../../../../assets/icons/gear.png');
 }

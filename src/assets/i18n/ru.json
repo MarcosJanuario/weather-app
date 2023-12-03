@@ -1,11 +1,12 @@
 {
-  "retrievingWeatherData": "Получение метеоданных...",
   "enterCityName": "Введите название города",
   "feelsLike": "Ощущается как",
   "humidity": "Влажность",
   "location": "Местоположение",
   "observationTime": "Время наблюдения",
+  "retrievingWeatherData": "Получение метеоданных...",
   "search": "Поиск",
+  "settings": "Настройки",
   "temperature": "Температура",
   "uvIndex": "УФ-индекс",
   "visibility": "Видимость",

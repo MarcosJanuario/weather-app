@@ -2,6 +2,7 @@
   <span>
     <input
       class="input-field"
+      [ngClass]="isDarkMode ? 'input-dark-mode' : 'input-light-mode'"
       id="city-input"
       type="text"
       placeholder="{{ 'enterCityName' | translate }}"
@@ -10,7 +11,9 @@
     />
   </span>
   <button
+    [ngClass]="isDarkMode ? 'button-dark-mode' : 'button-light-mode'"
     [disabled]="isButtonDisabled"
     (click)="searchCity()">{{ 'search' | translate }}</button>
-  <div class="gear" (click)="toggleSideMenu()"></div>
+  <div class="gear"
+       [ngClass]="isDarkMode ? 'gear-dark-mode' : 'gear-light-mode'" (click)="toggleSideMenu()"></div>
 </div>

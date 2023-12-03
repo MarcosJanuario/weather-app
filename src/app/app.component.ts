@@ -28,7 +28,7 @@ export class AppComponent implements OnDestroy {
   }
 
   get isDarkMode(): boolean {
-    return this.settings.theme === Theme.BLACK;
+    return this.settings.theme === Theme.DARK;
   }
 
   subscribeToSettings(): void {

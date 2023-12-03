@@ -1,11 +1,12 @@
 {
-  "retrievingWeatherData": "Retrieving Weather data...",
   "enterCityName": "Enter city name",
   "feelsLike": "Fells Like",
   "humidity": "Humidity",
   "location": "Location",
   "observationTime": "Observation Time",
+  "retrievingWeatherData": "Retrieving Weather data...",
   "search": "Search",
+  "settings": "Settings",
   "temperature": "Temperature",
   "uvIndex": "UV Index",
   "visibility": "Visibility",

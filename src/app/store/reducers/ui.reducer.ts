@@ -3,7 +3,7 @@ import { toggleLoadingSpinner, toggleSideMenu } from '../actions/ui.actions';
 import { LoadingSpinnerAction, SideMenuAction, UiController } from '../../shared/types/UiController';
 
 export const initialState: UiController = {
-  sideMenu: { show: 'hidden' },
+  sideMenu: { show: 'visible' },
   loadingSpinner: { show: false }
 };
 

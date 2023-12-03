@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { Settings } from '../../types/Settings';
+import { Settings, Theme } from '../../types/Settings';
 import { WeatherService } from '../../services/weather.service';
 import { WeatherData, WeatherResponseData } from '../../types/Weather';
 import { updateWeather } from '../../../store/actions/weather.actions';
@@ -19,12 +19,17 @@ export class InputSearchComponent implements OnDestroy {
   private _destroy$ = new Subject<void>();
   private _inputChange$ = new Subject<string>();
 
+  settingsObservable$: Observable<Settings>;
+
   inputValue: string = '';
+  settings: Settings = <Settings>{};
 
   constructor(
     private store: Store<{ settings: Settings; weather: WeatherData; }>,
     private weatherService: WeatherService,
   ) {
+    this.settingsObservable$ = store.select('settings');
+
     this._inputChange$
       .pipe(
         debounceTime(INPUT_DEBOUNCE_TIME),
@@ -33,11 +38,27 @@ export class InputSearchComponent implements OnDestroy {
       .subscribe(newValue => {
         this.inputValue = newValue;
       });
+
+    this.subscribeToSettings();
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
   }
 
   onInputChange(event: Event) {
     const newValue = (event.target as HTMLInputElement).value;
     this._inputChange$.next(newValue);
+  }
+
+  subscribeToSettings(): void {
+    this.settingsObservable$
+      .pipe(
+        takeUntil(this._destroy$)
+      )
+      .subscribe((settings: Settings): void => {
+        this.settings = settings;
+      });
   }
 
   searchCity(): void {
@@ -67,7 +88,6 @@ export class InputSearchComponent implements OnDestroy {
             },
             error: (error): void => console.error('Error fetching weather data:', error),
             complete: (): void => {
-              console.log('Weather data fetch completed.')
               this.store.dispatch(toggleLoadingSpinner({
                 data: false
               }));

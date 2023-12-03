@@ -46,7 +46,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
   }
 
   get isDarkMode(): boolean {
-    return this.settings.theme === Theme.BLACK;
+    return this.settings.theme === Theme.DARK;
   }
 
   ngOnInit() {
@@ -61,7 +61,6 @@ export class WeatherComponent implements OnInit, OnDestroy {
       )
       .subscribe((settings: Settings): void => {
         this.settings = settings;
-        console.log('[SETTINGS] weather.comp settings: ', this.settings);
       });
   }
 
@@ -73,7 +72,6 @@ export class WeatherComponent implements OnInit, OnDestroy {
       .subscribe((weatherData: WeatherData): void => {
         if (weatherData.data) {
           this.weatherData = weatherData.data;
-          console.log('[WEATHER] app.comp weatherData: ', this.weatherData);
         }
       });
   }

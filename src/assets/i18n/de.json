@@ -1,11 +1,12 @@
 {
-  "retrievingWeatherData": "Wetterdaten werden abgerufen...",
   "enterCityName": "Geben Sie den Stadtnamen ein",
   "feelsLike": "Gefühlt wie",
   "humidity": "Luftfeuchtigkeit",
   "location": "Ort",
   "observationTime": "Beobachtungszeit",
+  "retrievingWeatherData": "Wetterdaten werden abgerufen...",
   "search": "Suche",
+  "settings": "Einstellungen",
   "temperature": "Temperatur",
   "uvIndex": "UV-Index",
   "visibility": "Sichtweite",

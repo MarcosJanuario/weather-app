@@ -16,6 +16,8 @@ import { SideMenuComponent } from './shared/components/side-menu/side-menu.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { uiReducer } from './store/reducers/ui.reducer';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
+import { ThemeSelectionComponent } from './shared/components/theme-selection/theme-selection.component';
+import { FormsModule } from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,7 +28,8 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     InputSearchComponent,
     SideMenuComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ThemeSelectionComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
       },
       defaultLanguage: 'en'
     }),
-    HeaderComponent
+    HeaderComponent,
+    FormsModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

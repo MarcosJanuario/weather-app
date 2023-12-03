@@ -1,4 +1,8 @@
-<div class="side-menu" [@slideInOut]="sideMenuState">
-  <p>This is the side menu content</p>
-  <button (click)="closeSideMenu()">Close Menu</button>
+<div class="side-menu" [@slideInOut]="sideMenuState"
+     [ngClass]="isDarkMode ? 'side-menu-dark-mode' : 'side-menu-light-mode'">
+  <div class="side-menu-header">
+    <div class="close" (click)="closeSideMenu()"></div>
+    <span>{{ 'settings' | translate }}</span>
+  </div>
+  <theme-selection></theme-selection>
 </div>

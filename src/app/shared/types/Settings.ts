@@ -1,6 +1,6 @@
 export enum Theme {
-  WHITE,
-  BLACK
+  LIGHT,
+  DARK
 }
 
 export type ThemeAction = {
