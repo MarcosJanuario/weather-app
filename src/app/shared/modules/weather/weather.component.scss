@@ -20,21 +20,25 @@
   padding: calc(2vh + 2vw);
   margin: calc(2vh + 2vw);
   border-radius: 1rem;
-  box-shadow: 8px 9px 10px -5px rgba(0, 0, 0, 0.4);
-  background: rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(1px);
+  box-shadow: 8px 8px 8px -6px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(.0rem);
   filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
 }
 
 .property-name {
   @include flexElement(center, center);
+  text-transform: uppercase;
   font-weight: bold;
+  font-size: 1rem;
+  color: #757575;
 }
 
 .property-value {
   @include flexElement(center, center);
   margin-top: 5px;
+  color: #424242;
   font-size: 2rem;
 }
 

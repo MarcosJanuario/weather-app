@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
 .main {
-  background-image: radial-gradient(#3f3b3b 1px, transparent 1px);
+  background-image: radial-gradient(#dedede 3.5px, transparent 2.5px), radial-gradient(#dedede 1.5px, transparent 1.5px);
   background-size: 10px 10px;
-  background-color: #ffffff;
+  background-position: 0 0, 5px 5px;
+  background-color: #e1e7e4;
   min-height: 100vh;
 }
