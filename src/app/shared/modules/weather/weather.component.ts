@@ -61,7 +61,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
       )
       .subscribe((settings: Settings): void => {
         this.settings = settings;
-        console.log('[WEATHER] this.settings: ', this.settings);
+        console.log('[SETTINGS] this.settings: ', this.settings);
       });
   }
 

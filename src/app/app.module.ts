@@ -12,6 +12,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { InputSearchComponent } from './shared/components/input-search/input-search.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { SideMenuComponent } from './shared/components/side-menu/side-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { uiReducer } from './store/reducers/ui.reducer';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,15 +23,18 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({
       settings: settingsReducer,
       weather: weatherReducer,
+      ui: uiReducer
     }),
     TranslateModule.forRoot({
       loader: {

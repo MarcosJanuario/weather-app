@@ -6,6 +6,7 @@ import { Settings } from '../../types/Settings';
 import { WeatherService } from '../../services/weather.service';
 import { WeatherData, WeatherResponseData } from '../../types/Weather';
 import { updateWeather } from '../../../store/actions/weather.actions';
+import { toggleSideMenu } from '../../../store/actions/ui.actions';
 
 @Component({
   selector: 'input-search',
@@ -66,6 +67,14 @@ export class InputSearchComponent implements OnDestroy {
 
   get isButtonDisabled(): boolean {
     return this.inputValue === '';
+  }
+
+  toggleSideMenu(): void {
+    this.store.dispatch(toggleSideMenu({
+      sideMenu: {
+        show: 'visible'
+      }}
+    ));
   }
 
   ngOnDestroy() {
