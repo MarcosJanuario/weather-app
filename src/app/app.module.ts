@@ -31,7 +31,7 @@ export function createTranslateLoader(http: HttpClient) {
     SideMenuComponent,
     LoadingSpinnerComponent,
     ThemeSelectionComponent,
-    LanguageSelectionComponent
+    LanguageSelectionComponent,
   ],
   imports: [
     BrowserModule,

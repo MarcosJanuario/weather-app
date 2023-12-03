@@ -16,29 +16,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
   settingsObservable$: Observable<Settings>;
   weatherObservable$: Observable<WeatherData>
   settings: Settings = <Settings>{};
-  weatherData: Weather = <Weather>{
-    "observationTime": "04:09 PM",
-    "temperature": 4,
-    "weatherDescriptions": [
-      "Overcast"
-    ],
-    "windSpeed": 4,
-    "humidity": 78,
-    "feelsLike": 3,
-    "uvIndex": 1,
-    "visibility": 10,
-    "location": {
-      "name": "Mainz",
-      "country": "Germany",
-      "region": "Rheinland-Pfalz",
-      "lat": "50.000",
-      "lon": "8.271",
-      "timezoneId": "Europe/Berlin",
-      "localtime": "2023-11-30 17:09",
-      "localtimeEpoch": 1701364140,
-      "utcOffset": "1.0"
-    }
-  };
+  weatherData: Weather | null = null;
 
   constructor(private store: Store<{ settings: Settings; weather: WeatherData}>) {
     this.settingsObservable$ = store.select('settings');

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Language, Settings } from '../../types/Settings';
-import { toggleSideMenu } from '../../../store/actions/ui.actions';
 import { updateLanguage } from '../../../store/actions/settings.actions';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -12,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './language-selection.component.html',
   styleUrls: ['./language-selection.component.scss']
 })
-export class LanguageSelectionComponent implements OnInit {
+export class LanguageSelectionComponent implements OnInit, OnDestroy {
   private _destroy$: Subject<void> = new Subject<void>();
 
   settingsObservable$: Observable<Settings>;

@@ -2,27 +2,12 @@
   <ng-container *ngIf="weatherData; else emptyData">
     <div class="grid-container">
 
-      <div *ngFor="let entry of weatherData | keyvalue" class="grid-item"
-           [ngClass]="isDarkMode ? 'grid-item-dark-mode' : 'grid-item-light-mode'">
+      <div *ngFor="let entry of weatherData | keyvalue" class="grid-item" [ngClass]="isDarkMode ? 'grid-item-dark-mode' : 'grid-item-light-mode'">
         <ng-container *ngIf="entry.key === 'location'; else otherData">
-          <div class="property-name"
-               [ngClass]="isDarkMode ? 'property-name-dark-mode' : 'property-name-light-mode'">
-            {{ entry.key | translate }}
-          </div>
-          <div class="property-value"
-               [ngClass]="isDarkMode ? 'property-value-light-mode' : 'property-value-dark-mode'">
-            {{ weatherData[entry.key].name }}
-          </div>
+          <weather-detail [header]="'location'" [contentValue]="weatherData[entry.key].name"></weather-detail>
         </ng-container>
         <ng-template #otherData>
-          <div class="property-name"
-               [ngClass]="isDarkMode ? 'property-name-dark-mode' : 'property-name-light-mode'">
-            {{ entry.key | translate }}
-          </div>
-          <div class="property-value"
-               [ngClass]="isDarkMode ? 'property-value-light-mode' : 'property-value-dark-mode'">
-            {{ entry.value }}
-          </div>
+          <weather-detail [header]="entry.key" [contentValue]="entry.value"></weather-detail>
         </ng-template>
       </div>
 
@@ -30,7 +15,7 @@
   </ng-container>
   <ng-template #emptyData>
     <div>
-      Empty data
+      {{ 'noData' | translate }}
     </div>
   </ng-template>
 </div>

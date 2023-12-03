@@ -4,6 +4,7 @@
   "humidity": "Humedad",
   "location": "Ubicación",
   "observationTime": "Hora de observación",
+  "noData": "Ingrese un nombre de ciudad en el campo de entrada anterior, para buscar información meteorológica sobre la ubicación proporcionada.",
   "retrievingWeatherData": "Recuperando datos meteorológicos...",
   "search": "Buscar",
   "settings": "Configuración",

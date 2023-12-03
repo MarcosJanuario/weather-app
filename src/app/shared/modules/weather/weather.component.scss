@@ -12,8 +12,8 @@
 }
 
 .grid-item {
-  padding: calc(2vh + 2vw);
-  margin: calc(2vh + 2vw);
+  padding: calc(.1vh + .1vw);
+  margin: calc(.6vh + .6vw);
   border-radius: 1rem;
   backdrop-filter: blur(.0rem);
   filter: blur(0px);
@@ -31,33 +31,3 @@
   box-shadow: 8px 8px 8px -6px rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 2555, 0.2);
 }
-
-.property-name {
-  @include flexElement(center, center);
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.property-name-light-mode {
-  color: #757575;
-}
-
-.property-name-dark-mode {
-  color: #9e9e9e;
-}
-
-.property-value {
-  @include flexElement(center, center);
-  margin-top: 5px;
-  font-size: 2rem;
-}
-
-.property-value-light-mode {
-  color: #fafafa;
-}
-
-.property-value-dark-mode {
-  color: #424242;
-}
-

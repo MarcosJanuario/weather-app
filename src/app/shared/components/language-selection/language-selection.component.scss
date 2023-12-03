@@ -1,8 +1,10 @@
+@import '../../../../assets/styles/variables';
+
 .language-selection {
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid black;
-  padding: 1rem 0.4rem;
+  padding: 1rem $menuPadding;
 
   label {
     margin-bottom: 0.4rem;

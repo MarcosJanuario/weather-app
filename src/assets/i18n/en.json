@@ -4,6 +4,7 @@
   "humidity": "Humidity",
   "location": "Location",
   "observationTime": "Observation Time",
+  "noData": "Enter a city name in the input field above, to look for weather information regarding the given location",
   "retrievingWeatherData": "Retrieving Weather data...",
   "search": "Search",
   "settings": "Settings",
