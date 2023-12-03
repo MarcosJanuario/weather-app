@@ -1,4 +1,5 @@
 <div class="theme-selection">
+  <label>Theme:</label>
   <label class="radio-container"
          [ngClass]="isDarkMode ? 'radio-container-dark-mode' : 'radio-container-light-mode'">
     <input type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.LIGHT" (ngModelChange)="onThemeChanged()">

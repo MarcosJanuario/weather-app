@@ -18,6 +18,7 @@ import { uiReducer } from './store/reducers/ui.reducer';
 import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 import { ThemeSelectionComponent } from './shared/components/theme-selection/theme-selection.component';
 import { FormsModule } from '@angular/forms';
+import { LanguageSelectionComponent } from './shared/components/language-selection/language-selection.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,7 +30,8 @@ export function createTranslateLoader(http: HttpClient) {
     InputSearchComponent,
     SideMenuComponent,
     LoadingSpinnerComponent,
-    ThemeSelectionComponent
+    ThemeSelectionComponent,
+    LanguageSelectionComponent
   ],
   imports: [
     BrowserModule,

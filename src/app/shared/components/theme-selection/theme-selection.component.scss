@@ -1,6 +1,8 @@
 .theme-selection {
   display: flex;
   flex-direction: column;
+  border-bottom: 2px solid black;
+  padding: .4rem;
 }
 
 .radio-container {
