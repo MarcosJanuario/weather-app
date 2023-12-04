@@ -3,11 +3,11 @@
   <label class="radio-container"
          [ngClass]="isDarkMode ? 'radio-container-dark-mode' : 'radio-container-light-mode'">
     <input type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.LIGHT" (ngModelChange)="onThemeChanged()">
-    <span class="radio-label">Light</span>
+    <span class="radio-label light-button">Light</span>
   </label>
   <label class="radio-container"
          [ngClass]="isDarkMode ? 'radio-container-dark-mode' : 'radio-container-light-mode'">
-    <input type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.DARK" (ngModelChange)="onThemeChanged()">
-    <span class="radio-label">Dark</span>
+    <input id="black-radio" type="radio" name="theme" [(ngModel)]="selectedTheme" [value]="Theme.DARK" (ngModelChange)="onThemeChanged()">
+    <span class="radio-label dark-button">Dark</span>
   </label>
 </div>

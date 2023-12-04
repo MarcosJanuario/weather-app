@@ -34,13 +34,16 @@ describe('AppComponent', () => {
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
+
     const app = fixture.componentInstance;
+
     expect(app).toBeTruthy();
   });
 
   it('should initialize settings and uiController with default values', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
+
     fixture.detectChanges();
 
     expect(app.settings).toEqual({

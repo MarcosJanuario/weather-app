@@ -83,6 +83,7 @@ describe('WeatherService', () => {
 
   it('should get current weather for a city', () => {
     const cityName = 'Mainz';
+
     service.getCurrentWeather(cityName).subscribe((data) => {
       expect(data).toEqual(mockWeatherResponseData);
     });
@@ -90,12 +91,10 @@ describe('WeatherService', () => {
     const req = httpTestingController.expectOne(`${environment.apiUrl}`);
     expect(req.request.method).toEqual('POST');
     expect(req.request.body).toEqual({ cityName });
-
     req.flush(mockWeatherResponseData);
   });
 
   it('should transform weather data', () => {
-
     const transformedData = service.transformWeatherData(mockWeatherResponseData);
 
     expect(transformedData).toEqual(transformedDataResult);

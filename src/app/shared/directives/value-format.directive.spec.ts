@@ -32,14 +32,16 @@ describe('ValueFormatDirective', () => {
 
   it('should format content value with suffix', () => {
     testComponent.valueFormat = { header: 'temperature', contentValue: 25 };
-    fixture.detectChanges();
 
+    fixture.detectChanges();
     const formattedValue = '25 celsius degree';
+
     expect(directiveElement.nativeElement.innerText).toBe(formattedValue);
   });
 
   it('should handle header without prefix', () => {
     testComponent.valueFormat = { header: 'Some other Header', contentValue: 42 };
+
     fixture.detectChanges();
 
     const formattedValue = '42';

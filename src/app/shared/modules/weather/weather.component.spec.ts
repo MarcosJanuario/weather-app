@@ -28,15 +28,18 @@ describe('WeatherComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WeatherComponent],
-      imports: [StoreModule.forRoot({}),
+      imports: [
+        StoreModule.forRoot({}),
         TranslateModule.forRoot(),
       ],
-      providers: [provideMockStore({
-        initialState: {
-          settings: initialSettings,
-          ui: initialUi,
-        },
-      })],
+      providers: [
+        provideMockStore({
+          initialState: {
+            settings: initialSettings,
+            ui: initialUi,
+          },
+        })
+      ],
     }).compileComponents();
 
     store = TestBed.inject(MockStore);
