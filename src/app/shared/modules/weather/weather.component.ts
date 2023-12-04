@@ -16,7 +16,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
   settingsObservable$: Observable<Settings>;
   weatherObservable$: Observable<WeatherData>
   settings: Settings = <Settings>{};
-  weatherData: Weather | null = null;
+  weatherData: WeatherData = <WeatherData>{};
 
   constructor(private store: Store<{ settings: Settings; weather: WeatherData}>) {
     this.settingsObservable$ = store.select('settings');
@@ -48,8 +48,8 @@ export class WeatherComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$)
       )
       .subscribe((weatherData: WeatherData): void => {
-        if (weatherData.data) {
-          this.weatherData = weatherData.data;
+        if (weatherData) {
+          this.weatherData = weatherData;
         }
       });
   }

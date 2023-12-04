@@ -63,38 +63,29 @@ export class InputSearchComponent implements OnDestroy {
 
   searchCity(): void {
     if (this.inputValue !== '') {
-
-      this.store.dispatch(toggleLoadingSpinner({
-        data: true
-      }));
+      this.handleLoadingSpinner(true);
 
       this.weatherService.getCurrentWeather(this.inputValue)
         .subscribe({
             next: (weatherData: WeatherResponseData): void => {
-              this.store.dispatch(updateWeather({
-                data: {
-                  observationTime: weatherData.observationTime,
-                  temperature: weatherData.temperature,
-                  weatherDescriptions: weatherData.weatherDescriptions,
-                  windSpeed: weatherData.windSpeed,
-                  pressure: weatherData.pressure,
-                  humidity: weatherData.humidity,
-                  feelsLike: weatherData.feelsLike,
-                  uvIndex: weatherData.uvIndex,
-                  visibility: weatherData.visibility,
-                  location: weatherData.location,
-                }
-              }));
+              const transformedData = this.weatherService.transformWeatherData(weatherData);
+              this.store.dispatch(updateWeather(transformedData));
             },
-            error: (error): void => console.error('Error fetching weather data:', error),
-            complete: (): void => {
-              this.store.dispatch(toggleLoadingSpinner({
-                data: false
-              }));
-            }
+            error: (error): void => {
+              console.error('Error fetching weather data:', error);
+              this.handleLoadingSpinner(false);
+              this.store.dispatch(updateWeather({ data: null, error: error.error.error }));
+            },
+            complete: (): void => this.handleLoadingSpinner(false)
           }
         );
     }
+  }
+
+  handleLoadingSpinner(value: boolean) {
+    this.store.dispatch(toggleLoadingSpinner({
+      data: value
+    }));
   }
 
   get isButtonDisabled(): boolean {

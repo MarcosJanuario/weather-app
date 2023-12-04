@@ -9,7 +9,8 @@ export const weatherReducer = createReducer(
   on(updateWeather, (state: WeatherData, action: WeatherData) => {
     console.log('[REDUCER] updateWeather: ', action);
     return {
-      data: action.data
+      data: action.data,
+      error: action.error
     };
   })
 );

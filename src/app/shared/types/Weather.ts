@@ -1,5 +1,10 @@
+export type WeatherError = {
+  message: boolean
+}
+
 export type WeatherData = {
-  data: Weather | null
+  data: Weather | null,
+  error: WeatherError | null
 }
 
 export type WeatherResponseData = {

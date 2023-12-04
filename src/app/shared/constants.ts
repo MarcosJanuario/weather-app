@@ -6,5 +6,6 @@ export const INITIAL_SETTINGS_DATA: Settings = {
   language: Language.ENGLISH
 }
 export const INITIAL_WEATHER_DATA: WeatherData = {
-  data: null
+  data: null,
+  error: null
 };

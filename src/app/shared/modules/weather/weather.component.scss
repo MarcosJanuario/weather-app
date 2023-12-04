@@ -31,3 +31,16 @@
   box-shadow: 8px 8px 8px -6px rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 2555, 0.2);
 }
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(213,0,0, 0.2);
+  border: 1px solid rgba(81, 81, 81, 0.25);
+  border-radius: 1rem;
+  backdrop-filter: blur(0rem);
+  filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
