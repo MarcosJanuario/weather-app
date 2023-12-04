@@ -27,7 +27,7 @@ export class ValueFormatDirective implements OnChanges {
 
   private formatContentValue(): void {
     const { header, contentValue } = this.valueFormat;
-    const suffix = SUFFIX_MAP.get(header) || ''; // Default to empty string if not found
+    const suffix = SUFFIX_MAP.get(header) || '';
 
     const formattedValue = `${contentValue} ${suffix}`;
     this.setInnerHtml(formattedValue);
