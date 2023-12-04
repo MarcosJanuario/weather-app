@@ -24,11 +24,7 @@ export class LanguageSelectionComponent implements OnInit, OnDestroy {
     this.settingsObservable$ = store.select('settings');
   }
 
-  ngOnInit(): void {
-    this.subscribeToSettings();
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -36,6 +32,10 @@ export class LanguageSelectionComponent implements OnInit, OnDestroy {
       .subscribe((settings: Settings): void => {
         this.selectedLanguage = settings.language;
       });
+  }
+
+  ngOnInit(): void {
+    this.subscribeToSettings();
   }
 
   onLanguageChange(event: Event): void {

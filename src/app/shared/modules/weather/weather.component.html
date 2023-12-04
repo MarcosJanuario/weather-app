@@ -16,14 +16,10 @@
   <ng-template #emptyData>
 
     <ng-container *ngIf="!weatherData.error; else errorBlock">
-      <div>
-        {{ 'noData' | translate }}
-      </div>
+      <div>{{ 'noData' | translate }}</div>
     </ng-container>
     <ng-template #errorBlock>
-      <div class="error-container">
-        {{ weatherData.error }}
-      </div>
+      <div class="error-container">{{ weatherData.error }}</div>
     </ng-template>
 
   </ng-template>

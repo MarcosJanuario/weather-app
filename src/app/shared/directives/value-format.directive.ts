@@ -1,6 +1,16 @@
 import { Directive, Input, ElementRef, Renderer2, OnChanges, SimpleChanges } from '@angular/core';
 
 type ValueFormat = { header: string, contentValue: any };
+
+const SUFFIX_MAP = new Map<string, string>([
+  ['feelsLike', 'celsius degree'],
+  ['temperature', 'celsius degree'],
+  ['humidity', '%'],
+  ['pressure', 'hPa'],
+  ['visibility', 'km'],
+  ['windSpeed', 'km/h'],
+]);
+
 @Directive({
   selector: '[appValueFormat]'
 })
@@ -17,28 +27,13 @@ export class ValueFormatDirective implements OnChanges {
 
   private formatContentValue(): void {
     const { header, contentValue } = this.valueFormat;
-    let suffix = '';
-
-    switch (header) {
-      case 'feelsLike':
-      case 'temperature':
-        suffix = 'celsius degree';
-        break;
-      case 'humidity':
-        suffix = '%';
-        break;
-      case 'pressure':
-        suffix = 'hPa';
-        break;
-      case 'visibility':
-        suffix = 'km';
-        break;
-      case 'windSpeed':
-        suffix = 'km/h';
-        break;
-    }
+    const suffix = SUFFIX_MAP.get(header) || ''; // Default to empty string if not found
 
     const formattedValue = `${contentValue} ${suffix}`;
-    this.renderer.setProperty(this.el.nativeElement, 'innerText', formattedValue);
+    this.setInnerHtml(formattedValue);
+  }
+
+  private setInnerHtml(value: string): void {
+    this.renderer.setProperty(this.el.nativeElement, 'innerText', value);
   }
 }

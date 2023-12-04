@@ -24,11 +24,7 @@ export class ThemeSelectionComponent {
     this.subscribeToSettings();
   }
 
-  get isDarkMode(): boolean {
-    return this.settings.theme === Theme.DARK;
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -37,6 +33,10 @@ export class ThemeSelectionComponent {
         this.settings = settings;
         this.selectedTheme = settings.theme
       });
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
   }
 
   onThemeChanged(): void {

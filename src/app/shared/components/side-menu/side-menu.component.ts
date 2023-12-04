@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { UiController } from '../../types/UiController';
 import { Store } from '@ngrx/store';
@@ -15,7 +15,6 @@ import { Settings, Theme } from '../../types/Settings';
     trigger('slideInOut', [
       state('hidden', style({
         transform: 'translateX(100%)'
-        // right: '-350px'
       })),
       state('visible', style({
         transform: 'translateX(0)'

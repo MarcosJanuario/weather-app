@@ -42,16 +42,7 @@ export class InputSearchComponent implements OnDestroy {
     this.subscribeToSettings();
   }
 
-  get isDarkMode(): boolean {
-    return this.settings.theme === Theme.DARK;
-  }
-
-  onInputChange(event: Event) {
-    const newValue = (event.target as HTMLInputElement).value;
-    this._inputChange$.next(newValue);
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -61,6 +52,21 @@ export class InputSearchComponent implements OnDestroy {
       });
   }
 
+  private handleLoadingSpinner(value: boolean) {
+    this.store.dispatch(toggleLoadingSpinner({
+      data: value
+    }));
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
+  }
+
+  onInputChange(event: Event) {
+    const newValue = (event.target as HTMLInputElement).value;
+    this._inputChange$.next(newValue);
+  }
+
   searchCity(): void {
     if (this.inputValue !== '') {
       this.handleLoadingSpinner(true);
@@ -68,7 +74,7 @@ export class InputSearchComponent implements OnDestroy {
       this.weatherService.getCurrentWeather(this.inputValue)
         .subscribe({
             next: (weatherData: WeatherResponseData): void => {
-              const transformedData = this.weatherService.transformWeatherData(weatherData);
+              const transformedData: WeatherData = this.weatherService.transformWeatherData(weatherData);
               this.store.dispatch(updateWeather(transformedData));
             },
             error: (error): void => {
@@ -80,12 +86,6 @@ export class InputSearchComponent implements OnDestroy {
           }
         );
     }
-  }
-
-  handleLoadingSpinner(value: boolean) {
-    this.store.dispatch(toggleLoadingSpinner({
-      data: value
-    }));
   }
 
   get isButtonDisabled(): boolean {

@@ -21,15 +21,7 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
     this.settingsObservable$ = store.select('settings');
   }
 
-  get isDarkMode(): boolean {
-    return this.settings.theme === Theme.DARK;
-  }
-
-  ngOnInit() {
-    this.subscribeToSettings();
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -37,6 +29,14 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
       .subscribe((settings: Settings): void => {
         this.settings = settings;
       });
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
+  }
+
+  ngOnInit() {
+    this.subscribeToSettings();
   }
 
   ngOnDestroy() {

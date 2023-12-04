@@ -27,30 +27,28 @@ export class AppComponent implements OnDestroy {
     this.subscribeToUiController();
   }
 
-  get isDarkMode(): boolean {
-    return this.settings.theme === Theme.DARK;
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
       )
       .subscribe((settings: Settings): void => {
         this.settings = settings;
-        console.log('[SETTINGS] app.comp settings: ', this.settings);
       });
   }
 
-  subscribeToUiController(): void {
+  private subscribeToUiController(): void {
     this.uiControllerObservable$
       .pipe(
         takeUntil(this._destroy$)
       )
       .subscribe((ui: UiController): void => {
-        console.log('[UI CONTROLLER] app.comp ui: ', ui);
         this.uiController = ui;
       });
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
   }
 
   ngOnDestroy() {

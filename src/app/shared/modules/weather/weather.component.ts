@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Settings, Theme } from '../../types/Settings';
 import { takeUntil } from 'rxjs/operators';
-import { Weather, WeatherData } from '../../types/Weather';
+import { WeatherData } from '../../types/Weather';
 
 @Component({
   selector: 'app-weather',
@@ -23,16 +23,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
     this.weatherObservable$ = store.select('weather');
   }
 
-  get isDarkMode(): boolean {
-    return this.settings.theme === Theme.DARK;
-  }
-
-  ngOnInit() {
-    this.subscribeToSettings();
-    this.subscribeToWeatherData();
-  }
-
-  subscribeToSettings(): void {
+  private subscribeToSettings(): void {
     this.settingsObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -42,7 +33,7 @@ export class WeatherComponent implements OnInit, OnDestroy {
       });
   }
 
-  subscribeToWeatherData(): void {
+  private subscribeToWeatherData(): void {
     this.weatherObservable$
       .pipe(
         takeUntil(this._destroy$)
@@ -52,6 +43,15 @@ export class WeatherComponent implements OnInit, OnDestroy {
           this.weatherData = weatherData;
         }
       });
+  }
+
+  get isDarkMode(): boolean {
+    return this.settings.theme === Theme.DARK;
+  }
+
+  ngOnInit() {
+    this.subscribeToSettings();
+    this.subscribeToWeatherData();
   }
 
   ngOnDestroy() {
