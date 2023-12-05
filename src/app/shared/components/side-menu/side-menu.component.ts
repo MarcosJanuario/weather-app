@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { UiController } from '../../types/UiController';
 import { Store } from '@ngrx/store';
@@ -44,6 +44,11 @@ export class SideMenuComponent {
 
   get isDarkMode(): boolean {
     return this.settings.theme === Theme.DARK;
+  }
+
+  @HostListener('document:keydown.escape')
+  handleEscapeKey() {
+    this.closeSideMenu();
   }
 
   subscribeToUiController(): void {

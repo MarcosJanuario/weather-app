@@ -2,12 +2,13 @@
   <span>
     <input
       class="input-field"
-      [ngClass]="isDarkMode ? 'input-dark-mode' : 'input-light-mode'"
       id="city-input"
       type="text"
       placeholder="{{ 'enterCityName' | translate }}"
+      [ngClass]="isDarkMode ? 'input-dark-mode' : 'input-light-mode'"
       [value]="inputValue"
       (input)="onInputChange($event)"
+      (keydown.enter)="searchCity()"
     />
   </span>
   <button

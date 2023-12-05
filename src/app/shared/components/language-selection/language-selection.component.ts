@@ -5,6 +5,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Language, Settings } from '../../types/Settings';
 import { updateLanguage } from '../../../store/actions/settings.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { LANGUAGE_LIST } from '../../constants';
+import { ListItem } from '../../types/LanguageSelection';
 
 @Component({
   selector: 'language-selection',
@@ -16,7 +18,7 @@ export class LanguageSelectionComponent implements OnInit, OnDestroy {
 
   settingsObservable$: Observable<Settings>;
   selectedLanguage: Language = Language.ENGLISH;
-
+  languageOptions: ListItem[] = LANGUAGE_LIST;
   constructor(
     private store: Store<{ settings: Settings }>,
     private translateService: TranslateService

@@ -13,6 +13,8 @@ The primary goal of this project is to demonstrate proficiency in various Angula
 * **Services:** Utilizing Angular services to encapsulate business logic and facilitate data communication.
 * **Custom Attribute Directives:** Creating and applying custom attribute directives to enhance the functionality of HTML elements.
 * **Angular Animation:** Incorporating Angular animations to provide a dynamic and engaging user experience.
+* **HostListener:** Utilizing the @HostListener decorator to handle events, such as keyboard inputs, at the host level.
+* **Unit Tests:** Writing unit tests for Angular components, services, and other parts of the application to ensure code quality and maintainability.
 
 ## Live Demo
 Explore the live demo of this Angular application [HERE](https://marcos-weather-app.web.app/weather).

@@ -1,11 +1,9 @@
 <div class="language-selection">
   <label for="languageDropdown">{{ 'selectLanguage' | translate }}:</label>
   <select id="languageDropdown" [(ngModel)]="selectedLanguage" (change)="onLanguageChange($event)">
-    <option value="en">English</option>
-    <option value="de">German</option>
-    <option value="es">Spanish</option>
-    <option value="pt-br">Portuguese</option>
-    <option value="it">Italian</option>
-    <option value="ru">Russian</option>
+    <option *ngFor="let option of languageOptions"
+            [value]="option.value">
+      {{ option.label | translate }}
+    </option>
   </select>
 </div>
