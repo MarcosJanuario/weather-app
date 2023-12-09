@@ -42,7 +42,6 @@ export class LanguageSelectionComponent implements OnInit, OnDestroy {
 
   onLanguageChange(event: Event): void {
     const language = (event.target as HTMLSelectElement).value;
-    console.log('LANGUAGE SELECTION: ', language);
     this.translateService.use(language);
     this.store.dispatch(updateLanguage({
       data: this.selectedLanguage

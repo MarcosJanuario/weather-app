@@ -12,7 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../modules/shared.module';
 import { UNIT_TEST_INITIAL_SETTINGS, UNIT_TEST_INITIAL_UI } from '../../utils/constants';
 
-describe('SideMenuComponent', () => {
+describe('SideMenuComponent', (): void => {
   let component: SideMenuComponent;
   let fixture: ComponentFixture<SideMenuComponent>;
   let store: Store<{ ui: UiController; settings: Settings }>;
@@ -47,11 +47,11 @@ describe('SideMenuComponent', () => {
     fixture.destroy();
   });
 
-  it('should create the component', () => {
+  it('should create the component', (): void => {
     expect(component).toBeTruthy();
   });
 
-  it('should close the side menu when closeSideMenu is called', () => {
+  it('should close the side menu when closeSideMenu is called', (): void => {
     component.closeSideMenu();
 
     expect(store.dispatch).toHaveBeenCalledWith(
@@ -61,9 +61,9 @@ describe('SideMenuComponent', () => {
     );
   });
 
-  it('should update sideMenuState when uiControllerObservable$ emits a value', () => {
+  it('should update sideMenuState when uiControllerObservable$ emits a value', (): void => {
     const ui: UiController = { sideMenu: { show: 'visible' }, loadingSpinner: { show: false } };
-    component.uiControllerObservable$ = new Observable<UiController>((observer) => {
+    component.uiControllerObservable$ = new Observable<UiController>((observer): void => {
       observer.next(ui);
     });
     component.subscribeToUiController();
@@ -71,7 +71,7 @@ describe('SideMenuComponent', () => {
     expect(component.sideMenuState).toEqual('visible');
   });
 
-  it('should update settings when settingsObservable$ emits a value', () => {
+  it('should update settings when settingsObservable$ emits a value', (): void => {
     const settings: Settings = { theme: Theme.DARK, language: Language.ENGLISH };
     component.settingsObservable$ = new Observable<Settings>((observer) => {
       observer.next(settings);
@@ -81,7 +81,7 @@ describe('SideMenuComponent', () => {
     expect(component.settings).toEqual(settings);
   });
 
-  it('should handle escape key press and call closeSideMenu', () => {
+  it('should handle escape key press and call closeSideMenu', (): void => {
     const spy = spyOn(component, 'closeSideMenu');
     const event = new KeyboardEvent('keydown', {
       key: 'Escape',
@@ -92,13 +92,13 @@ describe('SideMenuComponent', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('should set isDarkMode to true when theme is DARK', () => {
+  it('should set isDarkMode to true when theme is DARK', (): void => {
     component.settings = {...UNIT_TEST_INITIAL_SETTINGS, theme: Theme.DARK } ;
 
     expect(component.isDarkMode).toBeTruthy();
   });
 
-  it('should set isDarkMode to false when theme is not DARK', () => {
+  it('should set isDarkMode to false when theme is not DARK', (): void => {
     component.settings = {...UNIT_TEST_INITIAL_SETTINGS, theme: Theme.LIGHT } ;
 
     expect(component.isDarkMode).toBeFalsy();

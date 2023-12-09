@@ -2,7 +2,7 @@
 Welcome to Marcos Weather App, a showcase of key Angular framework concepts and best practices..
 
 ## Purpose
-The primary goal of this project is to demonstrate proficiency in various Angular topics, highlighting the application of essential concepts for building robust and scalable web applications. While the UI serves the purpose of a Weather App, the emphasis here is on showcasing my Angular capabilities.
+The primary goal of this project is to simply demonstrate proficiency in various Angular topics, highlighting the application of essential concepts for building robust and scalable web applications. While the UI serves the purpose of a Weather App and it was not the focus, the emphasis here is on showcasing my Angular capabilities.
 
 ## Key Angular Concepts Covered
 * **Lazy Loading:** Optimizing application performance through lazy loading of modules.
@@ -15,7 +15,7 @@ The primary goal of this project is to demonstrate proficiency in various Angula
 * **Angular Animation:** Incorporating Angular animations to provide a dynamic and engaging user experience.
 * **HostListener:** Utilizing the @HostListener decorator to handle events, such as keyboard inputs, at the host level.
 * **Unit Tests:** Writing unit tests for Angular components, services, and other parts of the application to ensure code quality and maintainability.
-
+![Example Image](./src/assets/images/test-coverage.png)
 ## Live Demo
 Explore the live demo of this Angular application [HERE](https://marcos-weather-app.web.app/weather).
 

@@ -4,7 +4,7 @@ import { WeatherService } from './weather.service';
 import { environment } from '../../../environments/environment';
 import { TRANSFORMED_WEATHER_DATA, WEATHER_RESPONSE_DATA } from '../utils/mock-data';
 
-describe('WeatherService', () => {
+describe('WeatherService', (): void => {
   let service: WeatherService;
   let httpTestingController: HttpTestingController;
 
@@ -22,14 +22,14 @@ describe('WeatherService', () => {
     httpTestingController.verify();
   });
 
-  it('should be created', () => {
+  it('should be created', (): void => {
     expect(service).toBeTruthy();
   });
 
-  it('should get current weather for a city', () => {
+  it('should get current weather for a city', (): void => {
     const cityName = 'Mainz';
 
-    service.getCurrentWeather(cityName).subscribe((data) => {
+    service.getCurrentWeather(cityName).subscribe((data): void => {
       expect(data).toEqual(WEATHER_RESPONSE_DATA);
     });
 
@@ -39,7 +39,7 @@ describe('WeatherService', () => {
     req.flush(WEATHER_RESPONSE_DATA);
   });
 
-  it('should transform weather data', () => {
+  it('should transform weather data', (): void => {
     const transformedData = service.transformWeatherData(WEATHER_RESPONSE_DATA);
 
     expect(transformedData).toEqual(TRANSFORMED_WEATHER_DATA);

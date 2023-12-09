@@ -11,7 +11,7 @@ import { updateTheme } from '../../../store/actions/settings.actions';
 import { By } from '@angular/platform-browser';
 import { UNIT_TEST_INITIAL_SETTINGS, UNIT_TEST_INITIAL_UI } from '../../utils/constants';
 
-describe('ThemeSelectionComponent', () => {
+describe('ThemeSelectionComponent', (): void => {
   let component: ThemeSelectionComponent;
   let fixture: ComponentFixture<ThemeSelectionComponent>;
   let store: MockStore<{ settings: Settings; ui: UiController }>;
@@ -49,11 +49,11 @@ describe('ThemeSelectionComponent', () => {
     destroy$.complete();
   });
 
-  it('should create', () => {
+  it('should create', (): void => {
     expect(component).toBeTruthy();
   });
 
-  it('should update selected theme when settings change', waitForAsync(() => {
+  it('should update selected theme when settings change', waitForAsync((): void => {
     const mockSettings: Settings = { theme: Theme.DARK, language: Language.ENGLISH };
     store.setState({
       settings: mockSettings,
@@ -67,7 +67,7 @@ describe('ThemeSelectionComponent', () => {
     });
   }));
 
-  it('should update store when theme is changed', () => {
+  it('should update store when theme is changed', (): void => {
     spyOn(store, 'dispatch');
 
     component.selectedTheme = Theme.DARK;
@@ -77,7 +77,7 @@ describe('ThemeSelectionComponent', () => {
   });
 
 
-  it('should have a button to toggle the theme', waitForAsync(() => {
+  it('should have a button to toggle the theme', waitForAsync((): void => {
     fixture.whenStable().then(() => {
       fixture.detectChanges();
 

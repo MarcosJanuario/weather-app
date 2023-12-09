@@ -22,7 +22,7 @@ describe('AppComponent', () => {
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('should create the app', (): void => {
     const fixture = TestBed.createComponent(AppComponent);
 
     const app = fixture.componentInstance;
@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should initialize settings and uiController with default values', () => {
+  it('should initialize settings and uiController with default values', (): void => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
 

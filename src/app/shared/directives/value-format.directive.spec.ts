@@ -10,7 +10,7 @@ class TestComponent {
   valueFormat!: { header: string; contentValue: number | string };
 }
 
-describe('ValueFormatDirective', () => {
+describe('ValueFormatDirective', (): void => {
   let fixture: ComponentFixture<TestComponent>;
   let testComponent: TestComponent;
   let directiveElement: DebugElement;
@@ -30,7 +30,7 @@ describe('ValueFormatDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  it('should format content value with suffix', () => {
+  it('should format content value with suffix', (): void => {
     testComponent.valueFormat = { header: 'temperature', contentValue: 25 };
 
     fixture.detectChanges();
@@ -39,7 +39,7 @@ describe('ValueFormatDirective', () => {
     expect(directiveElement.nativeElement.innerText).toBe(formattedValue);
   });
 
-  it('should handle header without prefix', () => {
+  it('should handle header without prefix', (): void => {
     testComponent.valueFormat = { header: 'Some other Header different than the ones filtered', contentValue: 42 };
 
     fixture.detectChanges();
