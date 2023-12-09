@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// TODO: WRITE TESTS!
 
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 // describe('InputComponent', () => {
 //   let component: InputComponent;

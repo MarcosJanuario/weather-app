@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Language, Settings } from '../../types/Settings';
 import { updateLanguage } from '../../../store/actions/settings.actions';
 import { TranslateService } from '@ngx-translate/core';
-import { LANGUAGE_LIST } from '../../constants';
+import { LANGUAGE_LIST } from '../../utils/constants';
 import { ListItem } from '../../types/LanguageSelection';
 
 @Component({

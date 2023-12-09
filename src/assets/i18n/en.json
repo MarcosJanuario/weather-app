@@ -9,6 +9,7 @@
   "observationTime": "Observation Time",
   "noData": "Enter a city name in the input field above, to look for weather information regarding the given location",
   "portuguese": "Portuguese-BR",
+  "pressure": "Pressure",
   "retrievingWeatherData": "Retrieving Weather data...",
   "russian": "Russian",
   "search": "Search",

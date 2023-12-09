@@ -1,3 +1,5 @@
+$SPINNER_SIZE: 4rem;
+
 .loading-backdrop {
   position: fixed;
   top: 0;
@@ -19,20 +21,19 @@
 }
 
 .spinner {
-  width: 56px;
-  height: 56px;
+  width: $SPINNER_SIZE;
+  height: $SPINNER_SIZE;
   display: grid;
-  border: 4.5px solid #0000;
+  border: .3rem solid #69f0ae;
   border-radius: 50%;
-  border-color: #69f0ae #0000;
-  animation: spinner-e04l1k 1s infinite linear;
+  animation: spinner-rotation 1s infinite linear;
 }
 
 .spinner::before,
 .spinner::after {
   content: "";
   grid-area: 1/1;
-  margin: 2.2px;
+  margin: .2rem;
   border: inherit;
   border-radius: 50%;
 }
@@ -49,10 +50,10 @@
 }
 
 .loading-text {
-  color: #ffffff;
+  color: #f5f5f5;
 }
 
-@keyframes spinner-e04l1k {
+@keyframes spinner-rotation {
   100% {
     transform: rotate(1turn);
   }

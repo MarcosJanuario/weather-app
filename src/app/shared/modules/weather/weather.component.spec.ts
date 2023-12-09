@@ -5,21 +5,7 @@ import { WeatherComponent } from './weather.component';
 import { Language, Settings, Theme } from '../../types/Settings';
 import { UiController } from '../../types/UiController';
 import { TranslateModule } from '@ngx-translate/core';
-
-const initialSettings = {
-  theme: Theme.LIGHT,
-  language: Language.ENGLISH,
-};
-
-const initialUi: UiController = {
-  sideMenu: {
-    show: 'hidden',
-  },
-  loadingSpinner: {
-    show: false,
-  },
-}
-
+import { UNIT_TEST_INITIAL_SETTINGS, UNIT_TEST_INITIAL_UI } from '../../utils/constants';
 describe('WeatherComponent', () => {
   let component: WeatherComponent;
   let fixture: ComponentFixture<WeatherComponent>;
@@ -35,8 +21,8 @@ describe('WeatherComponent', () => {
       providers: [
         provideMockStore({
           initialState: {
-            settings: initialSettings,
-            ui: initialUi,
+            settings: UNIT_TEST_INITIAL_SETTINGS,
+            ui: UNIT_TEST_INITIAL_UI,
           },
         })
       ],
@@ -62,12 +48,10 @@ describe('WeatherComponent', () => {
       theme: Theme.DARK,
       language: Language.ENGLISH,
     };
-
     store.setState({
       settings: newSettings,
-      ui: initialUi
+      ui: UNIT_TEST_INITIAL_UI
     });
-
     fixture.detectChanges();
 
     expect(component.isDarkMode).toBe(true);

@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { updateTheme, resetSettings, updateLanguage } from '../actions/settings.actions';
 import { LanguageAction, Settings, ThemeAction } from '../../shared/types/Settings';
-import { INITIAL_SETTINGS_DATA } from '../../shared/constants';
+import { INITIAL_SETTINGS_DATA } from '../../shared/utils/constants';
 
 export const initialState: Settings = INITIAL_SETTINGS_DATA;
 

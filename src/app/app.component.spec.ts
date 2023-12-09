@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { Language, Theme } from './shared/types/Settings';
 import { SharedModule } from './shared/modules/shared.module';
 import { provideMockStore } from '@ngrx/store/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { UNIT_TEST_INITIAL_SETTINGS, UNIT_TEST_INITIAL_UI } from './shared/utils/constants';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -14,18 +14,8 @@ describe('AppComponent', () => {
       providers: [
         provideMockStore({
           initialState: {
-            settings: {
-              theme: Theme.LIGHT,
-              language: Language.ENGLISH,
-            },
-            ui: {
-              sideMenu: {
-                show: 'hidden',
-              },
-              loadingSpinner: {
-                show: false,
-              },
-            },
+            settings: UNIT_TEST_INITIAL_SETTINGS,
+            ui: UNIT_TEST_INITIAL_UI,
           },
         }),
       ],
@@ -46,18 +36,8 @@ describe('AppComponent', () => {
 
     fixture.detectChanges();
 
-    expect(app.settings).toEqual({
-      theme: Theme.LIGHT,
-      language: Language.ENGLISH,
-    });
-    expect(app.uiController).toEqual({
-      sideMenu: {
-        show: 'hidden',
-      },
-      loadingSpinner: {
-        show: false,
-      },
-    });
+    expect(app.settings).toEqual(UNIT_TEST_INITIAL_SETTINGS);
+    expect(app.uiController).toEqual(UNIT_TEST_INITIAL_UI);
   });
 
 });

@@ -7,7 +7,7 @@ import { ValueFormatDirective } from './value-format.directive';
   template: '<div [appValueFormat]="valueFormat"></div>',
 })
 class TestComponent {
-  valueFormat!: { header: string; contentValue: any };
+  valueFormat!: { header: string; contentValue: number | string };
 }
 
 describe('ValueFormatDirective', () => {
@@ -40,7 +40,7 @@ describe('ValueFormatDirective', () => {
   });
 
   it('should handle header without prefix', () => {
-    testComponent.valueFormat = { header: 'Some other Header', contentValue: 42 };
+    testComponent.valueFormat = { header: 'Some other Header different than the ones filtered', contentValue: 42 };
 
     fixture.detectChanges();
 

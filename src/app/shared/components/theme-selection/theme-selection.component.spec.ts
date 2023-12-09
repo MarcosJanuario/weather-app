@@ -9,20 +9,7 @@ import { UiController } from '../../types/UiController';
 import { SharedModule } from '../../modules/shared.module';
 import { updateTheme } from '../../../store/actions/settings.actions';
 import { By } from '@angular/platform-browser';
-
-const initialSettings = {
-  theme: Theme.LIGHT,
-  language: Language.ENGLISH,
-};
-
-const initialUi: UiController = {
-  sideMenu: {
-    show: 'hidden',
-  },
-  loadingSpinner: {
-    show: false,
-  },
-}
+import { UNIT_TEST_INITIAL_SETTINGS, UNIT_TEST_INITIAL_UI } from '../../utils/constants';
 
 describe('ThemeSelectionComponent', () => {
   let component: ThemeSelectionComponent;
@@ -41,8 +28,8 @@ describe('ThemeSelectionComponent', () => {
       providers: [
         provideMockStore({
           initialState: {
-            settings: initialSettings,
-            ui: initialUi,
+            settings: UNIT_TEST_INITIAL_SETTINGS,
+            ui: UNIT_TEST_INITIAL_UI,
           },
         })
       ],
@@ -70,7 +57,7 @@ describe('ThemeSelectionComponent', () => {
     const mockSettings: Settings = { theme: Theme.DARK, language: Language.ENGLISH };
     store.setState({
       settings: mockSettings,
-      ui: initialUi
+      ui: UNIT_TEST_INITIAL_UI
     });
 
     fixture.detectChanges();
