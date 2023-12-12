@@ -1,26 +1,17 @@
 <div class="weather-wrapper" [ngClass]="{'dark-mode': isDarkMode}">
   <ng-container *ngIf="weatherData.data; else emptyData">
     <div class="grid-container">
-
-      <div *ngFor="let entry of weatherData.data | keyvalue" class="grid-item" [ngClass]="isDarkMode ? 'grid-item-dark-mode' : 'grid-item-light-mode'">
-        <ng-container *ngIf="entry.key === 'location'; else otherData">
-          <weather-detail [header]="'location'" [contentValue]="weatherData.data[entry.key].name"></weather-detail>
-        </ng-container>
-        <ng-template #otherData>
-          <weather-detail [header]="entry.key" [contentValue]="entry.value"></weather-detail>
-        </ng-template>
+      <div *ngFor="let data of weatherData.data | keyvalue">
+        <weather-detail [header]="data.key" [contentValue]="data.key === 'location' ? weatherData.data[data.key].name : data.value"></weather-detail>
       </div>
-
     </div>
   </ng-container>
   <ng-template #emptyData>
-
     <ng-container *ngIf="!weatherData.error; else errorBlock">
       <div>{{ 'noData' | translate }}</div>
     </ng-container>
     <ng-template #errorBlock>
       <div class="error-container">{{ weatherData.error }}</div>
     </ng-template>
-
   </ng-template>
 </div>

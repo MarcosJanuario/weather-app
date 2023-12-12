@@ -1,4 +1,4 @@
-<div class="grid-item">
+<div class="grid-item" [ngClass]="isDarkMode ? 'grid-item-dark-mode' : 'grid-item-light-mode'">
   <div class="property-name" [ngClass]="isDarkMode ? 'property-name-dark-mode' : 'property-name-light-mode'">
     {{ header | translate }}
   </div>

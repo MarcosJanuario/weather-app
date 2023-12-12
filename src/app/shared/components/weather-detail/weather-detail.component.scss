@@ -3,10 +3,21 @@
 .grid-item {
   padding: calc(2vh + 2vw);
   margin: calc(2vh + 2vw);
-  border-radius: 1rem;
   backdrop-filter: blur(.0rem);
   filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
+}
+
+.grid-item-light-mode {
+  border: 2px solid #212121;
+  box-shadow: 8px 8px 8px -6px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.grid-item-dark-mode {
+  border: 2px solid #dedede;
+  box-shadow: 8px 8px 8px -6px rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 2555, 0.2);
 }
 
 .property-name {

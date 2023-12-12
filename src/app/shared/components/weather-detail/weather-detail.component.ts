@@ -19,6 +19,7 @@ export class WeatherDetailComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<{ settings: Settings }>) {
     this.settingsObservable$ = store.select('settings');
+    console.log('[contentValue]: ', this.contentValue);
   }
 
   private subscribeToSettings(): void {
