@@ -1,8 +1,7 @@
-<div class="side-menu" [@slideInOut]="sideMenuState"
-     [ngClass]="isDarkMode ? 'side-menu-dark-mode' : 'side-menu-light-mode'">
+<div class="side-menu" [@slideInOut]="sideMenuState" [ngClass]="isDarkMode ? 'side-menu-dark-mode' : 'side-menu-light-mode'">
   <div class="side-menu-header">
-    <div class="close" (click)="closeSideMenu()"></div>
-    <span>{{ 'settings' | translate }}</span>
+    <div class="close" [ngClass]="isDarkMode ? 'black-icon' : 'white-icon'" (click)="closeSideMenu()"></div>
+    <span [ngClass]="isDarkMode ? 'black' : 'white'">{{ 'settings' | translate }}</span>
   </div>
   <theme-selection></theme-selection>
   <language-selection></language-selection>

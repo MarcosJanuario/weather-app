@@ -4,7 +4,7 @@
 .side-menu {
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  width: 15vw;
   height: 100%;
   position: fixed;
   top: 0;
@@ -13,52 +13,57 @@
   padding: 20px 0;
   z-index: 1000;
   backdrop-filter: blur(1rem);
+  box-shadow: -2px 0 5px #212121;
   filter: blur(0px);
   -webkit-backdrop-filter: blur(0px);
-
-  @media screen and (max-width: 1024px) {
+  @include laptop {
+    width: 20vw;
+  }
+  @include tablet {
     width: 40vw;
   }
-
-  @media screen and (max-width: 512px) {
-    width: 60vw;
-  }
-
-  @media screen and (max-width: 300px) {
-    width: 100%
+  @include mobile {
+    width: 100vw;
   }
 }
 
 .side-menu-dark-mode {
   background: rgba(255, 255, 255, 0.3);
-  box-shadow: -2px 0 5px rgba(255, 255, 255, 0.1);
 }
 
 .side-menu-light-mode {
   background: rgba(0, 0, 0, 0.2);
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .side-menu-header {
   display: flex;
   position: relative;
   justify-content: center;
+  align-items: center;
   margin-bottom: 2rem;
+  height:2rem;
   padding: 0 $MENU_PADDING;
 
   .close {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
     top: 0;
     left: 1rem;
-    background-image: url('../../../../assets/icons/close.png');
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: transform 0.1s ease-in-out;
+
+    &.white-icon {
+      background-image: url('../../../../assets/icons/close-white.png');
+    }
+
+    &.black-icon {
+      background-image: url('../../../../assets/icons/close-black.png');
+    }
 
     &:active {
       transform: translateY(2px) scale(0.95);
@@ -67,5 +72,13 @@
 
   span {
     text-transform: uppercase;
+
+    &.black {
+      color: #212121;
+    }
+
+    &.white {
+      color: #f5f5f5;
+    }
   }
 }

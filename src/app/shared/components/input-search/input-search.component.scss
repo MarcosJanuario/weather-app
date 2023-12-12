@@ -1,12 +1,18 @@
+@import '../../../../assets/styles/mixins';
+
 .input-wrapper {
-  //background: rgba(0, 0, 0, 0.2);
   width: 100vw;
   text-align: center;
   position: relative;
-  span {
-    position: relative;
-    display: inline-block;
-    margin: 6vh 0;
+
+  .search-wrapper {
+    @include flexElement(center, center);
+
+    span {
+      position: relative;
+      display: inline-block;
+      margin: 6vh 0;
+    }
   }
 }
 
@@ -84,6 +90,9 @@ button:active {
   justify-content: center;
   cursor: pointer;
   transition: transform 0.1s ease-in-out;
+  @include mobile {
+    margin: 1rem 2rem 0 0;
+  }
 
   &:active {
     transform: translateY(2px) scale(0.95);
